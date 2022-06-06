@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计时器</title>
+    <style>
+        .bigDiv {
+            margin: 50px auto;
+            width: 200px;
+            height: 200px;
+            background-color: rgb(217, 224, 224);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="bigDiv">
+    <h2 align="center">计时器</h2>
+    <div id="showNum" align="center">
+        0
+    </div>
+    <br>
+    <br>
+    <div class="butDiv">&nbsp&nbsp&nbsp&nbsp
+        <button type="button" id="start">开始计时</button>
+        <button type="button" id="stop">暂停计时</button>
+    </div>
+</div>
+<script>
+    let int = null;
+    document.getElementById("start").addEventListener('click', function () {
+        if (int == null) {
+            int = setInterval(startNum, 1000);
+        }
+    });
+    document.getElementById("stop").addEventListener('click', function () {
+        clearInterval(int);
+        int = null;
+    });
+    let num = 0;
+    document.getElementById("reset").addEventListener('click', function () {
+        if (int == null) {
+            num = 0;
+            document.getElementById("showNum").innerHTML = num;
+        }
+    });
+
+    function startNum() {
+        num++;
+        document.getElementById("showNum").innerHTML = num;
+    }
+</script>
+</body>
+</html>
